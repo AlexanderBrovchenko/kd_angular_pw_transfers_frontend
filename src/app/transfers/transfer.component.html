@@ -1,0 +1,42 @@
+<div class="home-wrapper" fxLayout="row" fxLayoutAlign="center center"
+        *ngIf="isLoggedIn"> 
+        <div class="box">        
+          <button class="close" mat-button (click)="closeBox()">X</button>
+   <div class="form-group" *ngIf="isAmountVisible">
+        <label>Amount</label>
+        <input type="number"
+        min="0.01"
+        max="{{balance}}"
+        step="0.01"
+        class="form-control" 
+        name="amount" 
+        [(ngModel)]="form.amount" 
+        #amount="ngModel"/>
+        <div class="alert-danger" *ngIf="form.error">
+            {{form.error}}
+        </div>
+    </div>
+    <mat-form-field class="example-full-width">
+        <mat-label>Who's the lucky one?</mat-label>
+        <input type="text"
+               placeholder="Pick one"
+               aria-label="Others"
+               matInput
+               [formControl]="usersControl"
+               [matAutocomplete]="auto">
+        <mat-autocomplete #auto="matAutocomplete"
+            (optionSelected)="showAmount($event.option.value)">
+          <mat-option *ngFor="let payee of filteredUsers" [value]="payee.name">
+            {{payee.name}}
+          </mat-option>
+        </mat-autocomplete>
+    </mat-form-field>
+    <div class="form-group">
+        <button class="btn btn-primary btn-block" (click)="wastePWs()">Send</button>
+    </div>
+
+    <div class="alert alert-success" *ngIf="isSucceeded">
+        {{resume}}
+      </div>
+    <div>
+</div>

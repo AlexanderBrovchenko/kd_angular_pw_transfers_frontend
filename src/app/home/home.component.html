@@ -1,0 +1,40 @@
+<div class="home-wrapper" fxLayout="row" fxLayoutAlign="center center" *ngIf="isLoggedIn">
+    <mat-table class="transfers-table mat-elevation-z8 box-large" [dataSource]="dataSource">
+  
+    <ng-container matColumnDef="id">
+        <mat-header-cell *matHeaderCellDef>#</mat-header-cell>
+        <mat-cell *matCellDef="let transfer">{{transfer.id}}</mat-cell>
+    </ng-container>
+  
+    <ng-container matColumnDef="payeeName">
+        <mat-header-cell *matHeaderCellDef>Payee</mat-header-cell>
+        <mat-cell class="payee-cell"
+                  *matCellDef="let transfer">{{transfer.payeeName}}</mat-cell>
+    </ng-container>
+  
+    <ng-container matColumnDef="operatedAt">
+        <mat-header-cell *matHeaderCellDef>Operated At</mat-header-cell>
+        <mat-cell class="operatedat-cell"
+                  *matCellDef="let transfer">
+        {{transfer.operatedAt | date:'medium'}}</mat-cell>
+    </ng-container>
+    
+    <ng-container matColumnDef="amount">
+        <mat-header-cell *matHeaderCellDef>Amount</mat-header-cell>
+        <mat-cell *matCellDef="let transfer">
+            {{transfer.amount / 100}}</mat-cell>
+    </ng-container>
+  
+    <ng-container matColumnDef="balance">
+        <mat-header-cell *matHeaderCellDef>Postbalance</mat-header-cell>
+        <mat-cell *matCellDef="let transfer">{{transfer.balance / 100}}</mat-cell>
+    </ng-container>
+  
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    
+    <mat-row *matRowDef="let row; columns: displayedColumns" 
+        title="Click here to repeat"
+        (click)="onRowClicked(row)"></mat-row>
+
+    </mat-table>
+</div>

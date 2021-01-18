@@ -1,5 +1,7 @@
 # KdPwTransfersFrontendAngularApp
 
+The project is frontend part of 2-partial project using RestAPI funcionality of https://github.com/AlexanderBrovchenko/kd_aspnetcore_restapi_pw_transfers_backend. Edit "apiUrl" parameter (/src/environments/environment.ts, line 7) with proper url you have deployed the 1st part on.
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.6.
 
 ## Development server
